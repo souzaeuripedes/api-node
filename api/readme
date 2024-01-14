@@ -1,0 +1,12 @@
+mudar versao do node para v18
+nvm use node 18
+
+export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+echo 'export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"' >> ~/.bashrc
+executar o app com sudo 
+
+//start mongo
+brew services start mongodb-community
+
+//mudar conexao para executar o container
+mongoose.connect('mongodb://mongodb:27017');

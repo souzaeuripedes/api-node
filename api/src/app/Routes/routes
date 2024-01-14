@@ -1,0 +1,25 @@
+const express = require('express');
+const movieController = require('../Controller/movieController');
+const reserveController = require('../Controller/reserveController');
+
+const router = express.Router();
+
+router.get('/api/movies', movieController.getAllMovies);
+router.get('/api/movies/:id', movieController.getMovieById);
+router.post('/api/movies', movieController.createMovie);
+router.put('/api/movies/:id', movieController.updateMovie);
+router.delete('/api/movies/:id', movieController.deleteMovie);
+
+router.delete('/api/deleteall', movieController.deleteAllMovies);
+
+router.post('/api/movies/bulk', movieController.createBulkMovies);
+
+
+router.post('/api/book', reserveController.bookMovie);
+router.post('/api/confirm', reserveController.confirmReservation);
+router.post('/api/return', reserveController.returnMovie);
+router.get('/api/reserve/:id', reserveController.getReservationById);
+
+
+
+module.exports = router;

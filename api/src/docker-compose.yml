@@ -1,0 +1,62 @@
+# version: '3'
+# services:
+#   mongodb:
+#     #image: mongo
+#     image: mongo-express
+#     container_name: mongodb
+#     ports:
+#       - "27017:27017"
+#     networks:
+#       - api-network
+#     extra_hosts:
+#       - "mongo:127.0.0.1"
+
+#   api:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: api-node
+#     ports:
+#       - "3000:3000"
+#     depends_on:
+#       - mongodb
+#     networks:
+#       - api-network
+#     environment:
+#       #MONGO_URI: "mongodb://mongodb:27017/api"
+#       MONGO_URI: "mongodb://127.0.0.1:27017/api"
+
+    
+
+# networks:
+#   api-network:
+
+
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27018:27017"
+    networks:
+      - api-network
+    extra_hosts:
+     - "mongo:127.0.0.1"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-node
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    networks:
+      - api-network
+    environment:
+      MONGO_URI: "mongodb://mongodb:27017/api"
+
+networks:
+  api-network:
